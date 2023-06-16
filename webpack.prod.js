@@ -11,7 +11,7 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     optimization: {
-        minimizer: [new TerserPlugin({}), new OptimizeCssAssetsPlugin({})]
+        minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()]
     },
     output: {
         libraryTarget: "var",
@@ -22,9 +22,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                use: {
+                    loader: "babel-loader"
+                }
             },
             {
                 test: /\.scss$/,
@@ -40,6 +42,13 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].css"
         }),
-        new WorkboxPlugin.GenerateSW(),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true
+        }),
     ],
-}
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        https: true,
+    },
+};

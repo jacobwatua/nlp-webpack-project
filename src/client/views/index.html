@@ -18,15 +18,24 @@
             <p>Determine the sentiment expressed in a text as positive, negative, or neutral. This helps in understanding the overall opinion or attitude conveyed by the text.</p>
         </div>
     </div>
-    <div id="root"></div>
+    <div id="root"></div> <!--Results-->
+    <div class="error">Invalid input! Try again</div>
+    <footer>
+        <ul>@udacity-Fend</ul>
+    </footer>
     <script>
-        // Check that service workers are supported
         if ('serviceWorker' in navigator) {
-            // Use the window load event to keep the page load performant
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js');
+            navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+            .then(registration => {
+                console.log('Service Worker registered successfully:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
             });
         }
+
     </script>
 </body>
 </html>

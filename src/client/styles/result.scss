@@ -3,3 +3,19 @@
     margin: 20px auto;
     box-sizing: 0 0 3px rgba(0, 0 , 0, 0.4);
 }
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    padding: 8px;
+    width: 250px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin-left: 40%;
+    display: none;
+}
