@@ -5,7 +5,7 @@ async function handleSubmit(event) {
   let formText = document.getElementById("article").value;
   postData("/article", { article: formText }).then(() => {
     getMeaning("/article/meaning").then((res) => {
-      if (res.status && res.status.msg !== "OK") {
+      if (res.status.msg !== "OK") {
         alert("Missing required parameter(s): txt, url, or doc");
       } else {
         const root = document.querySelector("#root");
