@@ -22,7 +22,7 @@ async function handleSubmit(event) {
           `<p>Confidence: ${confidence} %</p>` +
           `<p>Irony: ${irony.toLowerCase()}</p>` +
           `<p>Subjectivity: ${subjectivity.toLowerCase()}</p>` +
-          `<p><b>Article</b>:<br><hr> ${sentence_list.text}`;
+          `<p><b>Article</b>:<br><hr> ${sentence_list[0].text}`;
       }
     });
   });
